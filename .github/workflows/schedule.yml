@@ -16,10 +16,10 @@ jobs:
 
       - name: auto green
         run: |
-          git config --local user.email ${{secrets.email}}
-          git config --local user.name ${{secrets.name}}
-          git remote set-url origin https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@gitub.com/${{github.repository}}
+          git config --local user.email ${{secrets.EMAIL}}
+          git config --local user.name ${{secrets.NAME}}
+          git remote set-url origin https://${{github.actor}}:${{secrets.TOKEN}}@gitub.com/${{github.repository}}
           git pull --rebase
-          date +"%Y-%m-%d %H:%M:%S.%N" > auto-green.txt
+          date +"%Y-%m-%d %H:%M:%S.%N" >> auto-green.txt
           git commit -am "auto green service"
           git push
