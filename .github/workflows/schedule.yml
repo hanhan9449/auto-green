@@ -21,5 +21,6 @@ jobs:
           git remote set-url origin https://${{github.actor}}:${{secrets.TOKEN}}@github.com/${{github.repository}}
           git pull --rebase
           date +"%Y-%m-%d %H:%M:%S.%N" >> auto-green.txt
-          git commit -am "auto green service"
+          git add .
+          git commit -m "auto green service"
           git push
