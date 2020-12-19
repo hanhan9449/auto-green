@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-    schedule:
-      - cron: "0 * * * *"
+  schedule:
+    - cron: "0 * * * *"
 
 jobs:
   autogreen:
@@ -13,13 +13,13 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
-      
+
       - name: auto green
         run: |
-        git config --local user.email ${{secrets.email}}
-        git config --local user.name ${{secrets.name}}
-        git remote set-url origin https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@gitub.com/${{github.repository}}
-        git pull --rebase
-        date +"%Y-%m-%d %H:%M:%S.%N" > auto-green.txt
-        git commit -am "auto green service"
-        git push
+          git config --local user.email ${{secrets.email}}
+          git config --local user.name ${{secrets.name}}
+          git remote set-url origin https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@gitub.com/${{github.repository}}
+          git pull --rebase
+          date +"%Y-%m-%d %H:%M:%S.%N" > auto-green.txt
+          git commit -am "auto green service"
+          git push
